@@ -46,7 +46,7 @@ function DataTable({ data }) {
   };
 
   return (
-    <div ref={chartRef} className="w-full h-[400px]">
+    <div ref={chartRef} className="w-full">
       {/* Search */}
       <div className="mb-2">
         <input
@@ -59,7 +59,7 @@ function DataTable({ data }) {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto border rounded-lg shadow">
+      <div className="overflow-x-auto border rounded-lg shadow max-h-[400px] overflow-y-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-100">
             <tr>
@@ -67,7 +67,7 @@ function DataTable({ data }) {
                 <th
                   key={header}
                   onClick={() => handleSort(header)}
-                  className="px-4 py-2 text-left text-sm font-semibold text-gray-700 cursor-pointer select-none"
+                  className="px-4 py-2 text-left text-sm font-semibold text-gray-700 cursor-pointer select-none sticky top-0 bg-gray-100 z-10"
                 >
                   {header}{" "}
                   {sortConfig.key === header
@@ -88,10 +88,7 @@ function DataTable({ data }) {
                 }`}
               >
                 {headers.map((header) => (
-                  <td
-                    key={header}
-                    className="px-4 py-2 text-sm text-gray-600"
-                  >
+                  <td key={header} className="px-4 py-2 text-sm text-gray-600">
                     {row[header]}
                   </td>
                 ))}
